@@ -1,0 +1,16 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+home:
+  path: /
+  controller: App\Controller\HomeController::home
+contact:
+  path: /contact
+  controller: App\Controller\HomeController::contact
+gites:
+  path: /gites
+  controller: App\Controller\HomeController::gites
+recherches:
+  path: /recherches
+  controller: App\Controller\HomeController::recherches
