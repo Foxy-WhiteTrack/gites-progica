@@ -1,0 +1,13 @@
+        // $manager = $doctrine->getManager();
+
+        // $gite = new Gite();
+        // $gite
+        //     ->setNom("Mon premier gite")
+        //     ->setDescription("Lorem")
+        //     ->setSurface(80)
+        //     ->setChambre(3)
+        //     ->setCouchage(5);
+
+        // $manager->persist($gite);
+
+        // $manager->flush();

@@ -21,20 +21,6 @@ class HomeController extends AbstractController
         $repository = $doctrine->getRepository(Gite::class);
         $gites = $repository->findAll();
 
-        // $manager = $doctrine->getManager();
-
-        // $gite = new Gite();
-        // $gite
-        //     ->setNom("Mon premier gite")
-        //     ->setDescription("Lorem")
-        //     ->setSurface(80)
-        //     ->setChambre(3)
-        //     ->setCouchage(5);
-
-        // $manager->persist($gite);
-
-        // $manager->flush();
-
         return $this->render('home/index.html.twig', [
             "titre" => "Super titre",
             "message" => "Helloooooow",
@@ -58,10 +44,13 @@ class HomeController extends AbstractController
      * @Route("/gites", name="gites")
      */
 
-    public function gites()
+    public function gites(ManagerRegistry $doctrine)
     {
+        $repository = $doctrine->getRepository(Gite::class);
+        $gites = $repository->findAll();
         return $this->render('home/gites.html.twig', [
-            "menu" => "gites"
+            "menu" => "gites",
+            "gites" => $gites
         ]);
     }
 
