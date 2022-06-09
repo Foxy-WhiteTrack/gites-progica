@@ -1,13 +1,24 @@
-        // $manager = $doctrine->getManager();
+Générer des gites: 
+(       Coller cette instruction dans Home() dans HomeController
+        Lancer l'index du site puis retirer l'instruction de HomeController
+)        
+        
+                // START
 
-        // $gite = new Gite();
-        // $gite
-        //     ->setNom("Mon premier gite")
-        //     ->setDescription("Lorem")
-        //     ->setSurface(80)
-        //     ->setChambre(3)
-        //     ->setCouchage(5);
-
-        // $manager->persist($gite);
-
-        // $manager->flush();
+                for ($i = 1; $i <= 20; $i++) {
+                    $manager = $doctrine->getManager();
+        
+                    $gite = new Gite();
+                    $gite
+                        ->setNom("Gite " . $i)
+                        ->setDescription("Description Gite " . $i)
+                        ->setSurface(random_int(50, 200))
+                        ->setChambre(random_int(1, 10))
+                        ->setCouchage(random_int(2, 15));
+        
+                    $manager->persist($gite);
+        
+                    $manager->flush();
+                }
+        
+                // END

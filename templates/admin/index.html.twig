@@ -1,5 +1,14 @@
 {% extends "dashboard.html.twig" %}
 {% block body %}
+
+	{% for message in app.flashes('success') %}
+		<div class="col-12 alert alert-success">
+			<div>
+				{{ message }}
+			</div>
+		</div>
+	{% endfor %}
+
 	<h1>Gestion des gites</h1>
 
 	<div class="form-group">
@@ -20,8 +29,23 @@
 					<td>{{ gite.id }}</td>
 					<td>{{ gite.nom }}</td>
 					<td>
-						<button class="btn btn-primary">Editer</button>
-						<button class="btn btn-danger">Supprimer</button>
+
+
+						<form action=" {{ path('admin_gite_delete', {id: gite.id}) }}" method="post">
+							<div class="row">
+								<div class="col-3">
+									<a href="{{ path('admin_gite_edit', {id: gite.id}) }}" class="btn btn-primary">Editer</a>
+									<input type="hidden" name="token" value="{{ csrf_token('gite_delete' ~ gite.id ) }}">
+								</div>
+								<div class="col-3">
+									<input type="submit" value="Supprimer" class="btn btn-danger">
+								</div>
+
+
+							</div>
+
+						</form>
+
 					</td>
 				</tr>
 			{% endfor %}
