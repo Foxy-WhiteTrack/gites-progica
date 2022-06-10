@@ -4,6 +4,7 @@
 
 {% block body %}
 
+<<<<<<< Updated upstream
 <div class="container mt-4">
     <h1>Voir tous nos gites</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -15,3 +16,29 @@
 </div>
     
 {% endblock body %}
+=======
+	<div class="jumbotron text-center">
+		<h1>L'Agence</h1>
+
+		<div class="row">
+
+			{% for gite in gites %}
+				<div class="col-4 mb-3">
+					<div class="card">
+						<img src="" class="card-img-top" alt="">
+						<div class="card-body">
+							<h5 class="card-title">{{ gite.nom }}</h5>
+							<p class="card-text">{{ gite.description }}</p>
+							<a href="{{ path('gite_show', {id: gite.id}) }}" class="btn btn-primary">Voir</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+	<div class="container"></div>
+
+
+{% endblock body %}
+>>>>>>> Stashed changes
