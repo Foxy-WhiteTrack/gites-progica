@@ -19,26 +19,45 @@ class Gite
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Merci de renseigner un nom")
+     * @Assert\Length(
+     *      min=5,
+     *      max=30,
+     *      minMessage= "Le nom doit avoir au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom doit avoir au maximum {{ limit }} caractères")
      */
     private string $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Merci de renseigner une description")
+     * @Assert\Length(
+     *      min=5,
+     *      max=30,
+     *      minMessage= "La description doit avoir au moins {{ limit }} caractères",
+     *      maxMessage = "La description doit avoir au maximum {{ limit }} caractères")
      */
     private string $description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Merci de renseigner une surface")
+     * @Assert\Range(
+     *      min=30,
+     *      max=300,
+     *      notInRangeMessage = "La surface doit être comprise entre {{ min }} et {{ max }} m2")
      */
     private int $surface;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Merci de renseigner un nombre de chambre")
      */
     private int $chambre;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Merci de renseigner un nombre de couchage")
      */
     private $couchage;
 
