@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Gite;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\GiteSearch;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Gite>
@@ -39,28 +40,60 @@ class GiteRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Gite[] Returns an array of Gite objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('g')
-//            ->andWhere('g.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('g.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Gite[]
+     */
+    public function findGiteSearch(GiteSearch $search)
+    {
+        $query = $this->createQueryBuilder('g');
 
-//    public function findOneBySomeField($value): ?Gite
-//    {
-//        return $this->createQueryBuilder('g')
-//            ->andWhere('g.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        if ($search->getMinSurface()) {
+            $query = $query
+                ->andWhere("g.surface >= :minSurface")
+                ->setParameter('minSurface', $search->getMinSurface());
+        }
+
+        if ($search->getMinChambre()) {
+            $query = $query
+                ->andWhere("g.chambre >= :minChambre")
+                ->setParameter('minChambre', $search->getMinChambre());
+        }
+
+        if ($search->getMinCouchage()) {
+            $query = $query
+                ->andWhere("g.couchage >= :minCouchage")
+                ->setParameter('minCouchage', $search->getMinCouchage());
+        }
+        $query = $query
+            ->orderBy("g.id", "ASC")
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
+
+    //    /**
+    //     * @return Gite[] Returns an array of Gite objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('g')
+    //            ->andWhere('g.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('g.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Gite
+    //    {
+    //        return $this->createQueryBuilder('g')
+    //            ->andWhere('g.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Gite;
-
+use App\Entity\GiteSearch;
+use App\Form\GiteSearchType;
 use Doctrine\Persistence\ManagerRegistry;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -16,30 +18,27 @@ class HomeController extends AbstractController
      * @Route("/", name="home")
      */
 
-    public function home(ManagerRegistry $doctrine)
+    public function home(ManagerRegistry $doctrine, Request $request)
     {
+        $search = new GiteSearch();
+
+        $form = $this->createForm(GiteSearchType::class, $search);
+        $form->handleRequest($request);
+
+        /** @var GiteRepository $repository */
         $repository = $doctrine->getRepository(Gite::class);
         $gites = $repository->findAll();
 
-        // $manager = $doctrine->getManager();
-
-        // $gite = new Gite();
-        // $gite
-        //     ->setNom("Mon premier gite")
-        //     ->setDescription("Lorem")
-        //     ->setSurface(80)
-        //     ->setChambre(3)
-        //     ->setCouchage(5);
-
-        // $manager->persist($gite);
-
-        // $manager->flush();
+        if ($form->isSubmitted()) {
+            $gites = $repository->findGiteSearch($search);
+        }
 
         return $this->render('home/index.html.twig', [
             "titre" => "Super titre",
             "message" => "Helloooooow",
             "menu" => "home",
-            "gites" => $gites
+            "gites" => $gites,
+            "form" => $form->createView()
         ]);
     }
 
@@ -58,10 +57,13 @@ class HomeController extends AbstractController
      * @Route("/gites", name="gites")
      */
 
-    public function gites()
+    public function gites(ManagerRegistry $doctrine)
     {
+        $repository = $doctrine->getRepository(Gite::class);
+        $gites = $repository->findAll();
         return $this->render('home/gites.html.twig', [
-            "menu" => "gites"
+            "menu" => "gites",
+            "gites" => $gites
         ]);
     }
 

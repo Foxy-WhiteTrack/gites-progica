@@ -8,6 +8,7 @@
 	<div class="jumbotron text-center">
 		<h1>L'Agence</h1>
 
+<<<<<<< Updated upstream
 		<div class="row">
 
 			{% for gite in gites %}
@@ -18,11 +19,56 @@
 							<h5 class="card-title">{{ gite.nom }}</h5>
 							<p class="card-text">{{ gite.description }}</p>
 							<a href="#" class="btn btn-primary">Voir plus</a>
+=======
+		<div class="container">
+			<div class="row">
+				{{ form_start(form) }}
+				<div class="car">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-3">
+								{{ form_row(form.minSurface) }}</div>
+							<div class="col-3">
+								{{ form_row(form.minChambre) }}
+							</div>
+							<div class="col-3">
+								{{ form_row(form.minCouchage) }}
+							</div>
+							<div class="col-3">
+								{{ form_row(form.submit) }}</div>
+>>>>>>> Stashed changes
 						</div>
+
 					</div>
 				</div>
-			{% endfor %}
+				{{ form_end(form) }}
+			</div>
+		</div>
 
+		<div class="container">
+			<div class="row">
+
+				{% for gite in gites %}
+					<div class="col-4 mb-3">
+						<div class="card">
+							<img src="" class="card-img-top" alt="">
+							<div class="card-body">
+								<h5 class="card-title">{{ gite.nom }}</h5>
+								<p class="card-text">
+									{{ gite.description }}
+									{{ gite.surface }}
+									m² -
+									{{ gite.chambre }}
+									ch -
+									{{ gite.couchage }}
+								</p>
+								<a href="{{ path('gite_show', {id: gite.id}) }}" class="btn btn-primary">Voir</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
+			</div>
 		</div>
 	</div>
 	<div class="container"></div>
