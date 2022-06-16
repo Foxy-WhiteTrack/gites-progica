@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipement index
+{% endblock %}
+
+{% block body %}
+	<h1>Equipement index</h1>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for equipement in equipements %}
+				<tr>
+					<td>{{ equipement.id }}</td>
+					<td>{{ equipement.name }}</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('app_equipement_show', {'id': equipement.id}) }}">show</a>
+						<a class="btn btn-warning" href="{{ path('app_equipement_edit', {'id': equipement.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a class="btn btn-primary" href="{{ path('app_equipement_new') }}">Create new</a>
+{% endblock %}

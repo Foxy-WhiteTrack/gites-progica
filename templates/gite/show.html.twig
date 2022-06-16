@@ -33,7 +33,19 @@
 				</tr>
 			</table>
 		</div>
-		<div class="col-6"></div>
+		<div class="col-6">
+			<h2>Equipements</h2>
+			<table class="table">
+				{% for equipement in gite.equipements %}
+					<tr>
+						<td>{{ equipement.name }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="container">
+			<a href="/" class="btn btn-primary">Retour</a>
+		</div>
 	</div>
 
 {% endblock %}
