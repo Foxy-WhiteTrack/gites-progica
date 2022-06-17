@@ -20,17 +20,17 @@
 					<td>{{ equipement.id }}</td>
 					<td>{{ equipement.name }}</td>
 					<td>
-						<a class="btn btn-primary" href="{{ path('app_equipement_show', {'id': equipement.id}) }}">show</a>
-						<a class="btn btn-warning" href="{{ path('app_equipement_edit', {'id': equipement.id}) }}">edit</a>
+						<a class="btn btn-primary" href="{{ path('app_equipement_show', {'id': equipement.id}) }}">Voir</a>
+						<a class="btn btn-warning" href="{{ path('app_equipement_edit', {'id': equipement.id}) }}">Editer</a>
 					</td>
 				</tr>
 			{% else %}
 				<tr>
-					<td colspan="3">no records found</td>
+					<td colspan="3">Aucun enregistrement trouvé</td>
 				</tr>
 			{% endfor %}
 		</tbody>
 	</table>
 
-	<a class="btn btn-primary" href="{{ path('app_equipement_new') }}">Create new</a>
+	<a class="btn btn-primary" href="{{ path('app_equipement_new') }}">Créer un nouveau</a>
 {% endblock %}

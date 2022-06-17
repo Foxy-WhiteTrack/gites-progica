@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Equipement;
 use App\Entity\Gite;
 use App\Form\GiteType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -87,5 +88,19 @@ class AdminController extends AbstractController
             $this->addFlash('error', 'Token non valide');
         }
         return $this->redirectToRoute('admin_index');
+    }
+
+    /**
+     * @Route("/equipement/", name="admin_equipement")
+     */
+    public function equipement_admin(ManagerRegistry $doctrine)
+    {
+        $repository = $doctrine->getRepository(Equipement::class);
+        $equipements = $repository->findAll();
+
+        return $this->render("equipement/index.html.twig", [
+            "menu" => "admin_equipement",
+            "equipements" => $equipements
+        ]);
     }
 }

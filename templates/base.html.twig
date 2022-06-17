@@ -11,6 +11,7 @@
 		<link
 		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		<link rel="stylesheet" href="{{ asset('css/default.css') }}">
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
@@ -43,7 +44,10 @@
 						</li>
 						{% if is_granted('ROLE_ADMIN') %}
 							<li class="nav-item">
-								<a class="nav-link {% if menu is defined and menu == 'admin' %}active{% endif %}" href="{{ path('admin_index') }}">Admin</a>
+								<a class="nav-link {% if menu is defined and menu == 'admin' %}active{% endif %}" href="{{ path('admin_index') }}">Gestion Gites</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link {% if menu is defined and menu == 'admin_equipement' %}active{% endif %}" href="{{ path('admin_equipement') }}">Gestion Equipement</a>
 							</li>
 						{% endif %}
 

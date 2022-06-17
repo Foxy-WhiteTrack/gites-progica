@@ -23,7 +23,7 @@ class GiteType extends AbstractType
                 "class" => Equipement::class,
                 "choice_label" => "name",
                 "multiple" => true,
-                "expanded" => true,
+
             ]);
     }
 
