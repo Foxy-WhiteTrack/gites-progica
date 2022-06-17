@@ -1,16 +1,25 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Nous contacter
+{% extends "base.html.twig" %}
+{% block title %}
+	Nous contacter
 {% endblock %}
-
 {% block body %}
 
-	<div class="container mt-4">
-		<h1>Nous contacter</h1>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-			        Dolore eius autem ratione natus dolores reprehenderit excepturi fugiat veritatis! 
-			        Ipsam exercitationem voluptatibus porro pariatur fuga quos doloribus odit, ea culpa! Ipsam!</p>
+	<div class="container">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<h1>Contact
+		</h1>
+		<div class="row">
+			<div class="col-md-6">
+				{{ form_start(form) }}
+				{{ form_rest(form) }}
+				<input type="submit" class="btn btn-success" value="Envoyer">
+				{{ form_end(form) }}
+			</div>
+		</div>
 	</div>
-	<div class="container"></div>
 
-{% endblock body %}
+{% endblock %}

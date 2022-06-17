@@ -1,18 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Recherches{% endblock %}
+{% block title %}Recherches
+{% endblock %}
 
 {% block body %}
 
-<div class="jumbotron text-center">
-    <h1>Rechercher un gite</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Dolore eius autem ratione natus dolores reprehenderit excepturi fugiat veritatis! 
-        Ipsam exercitationem voluptatibus porro pariatur fuga quos doloribus odit, ea culpa! Ipsam!</p>
-</div>
-<div class="container">
+	<div class="row my-3">
+		{{ form_start(form) }}
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-2">
+						{{ form_row(form.minSurface) }}
+					</div>
+					<div class="col-2">
+						{{ form_row(form.minChambre) }}
+					</div>
+					<div class="col-2">
+						{{ form_row(form.minCouchage) }}
+					</div>
+					<div class="col-3">
+						{{ form_row(form.equipement) }}
+					</div>
+					<div class="col-3">
+						{{ form_row(form.submit) }}
+					</div>
+				</div>
+
+			</div>
+		</div>
+		{{ form_end(form) }}
+	</div>
+
+	<div class="m-2 p-2">
+
+		<div class="container">
+			<div class="row">
+
+				{% for gite in gites %}
+					<div class="col-4 mb-3">
+						<div class="card">
+							<img src="{{ asset('img/mountains.jpg') }}" class="card-img-top" alt="">
+							<div class="card-body">
+								<h5 class="card-title">{{ gite.nom }}</h5>
+								<p class="card-text">
+									{{ gite.description }}
+									{{ gite.surface }}
+									m² -
+									{{ gite.chambre }}
+									ch -
+									{{ gite.couchage }}
+								</p>
+								<a href="{{ path('gite_show', {id: gite.id}) }}" class="btn btn-primary">Voir</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+
 
 </div>
-
-    
-{% endblock body %}
+<div class="container"></div>{% endblock body %}
