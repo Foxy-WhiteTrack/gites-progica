@@ -76,7 +76,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/gites", name="gites")
+     * @Route("/recherches", name="recherches")
      */
 
     public function recherches(ManagerRegistry $doctrine, Request $request)

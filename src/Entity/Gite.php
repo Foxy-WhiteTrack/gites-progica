@@ -35,8 +35,8 @@ class Gite
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Merci de renseigner une description")
      * @Assert\Length(
-     *      min=5,
-     *      max=30,
+     *      min=10,
+     *      max=255,
      *      minMessage= "La description doit avoir au moins {{ limit }} caractères",
      *      maxMessage = "La description doit avoir au maximum {{ limit }} caractères")
      */
@@ -68,6 +68,36 @@ class Gite
      * @ORM\ManyToMany(targetEntity=Equipement::class, inversedBy="gites")
      */
     private $equipements;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="gites")
+     */
+    private $user;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $animaux;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $tarifAnimaux;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $tarifHauteSaison;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $tarifBasseSaison;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ville;
 
     public function __construct()
     {
@@ -161,6 +191,80 @@ class Gite
     public function removeEquipement(Equipement $equipement): self
     {
         $this->equipements->removeElement($equipement);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function isAnimaux(): ?bool
+    {
+        return $this->animaux;
+    }
+
+    public function setAnimaux(bool $animaux): self
+    {
+        $this->animaux = $animaux;
+
+        return $this;
+    }
+
+    public function getTarifAnimaux(): ?float
+    {
+        return $this->tarifAnimaux;
+    }
+
+    public function setTarifAnimaux(float $tarifAnimaux): self
+    {
+        if ($tarifAnimaux = null) {
+            $tarifAnimaux = 0;
+        }
+        $this->tarifAnimaux = $tarifAnimaux;
+        return $this;
+    }
+
+    public function getTarifHauteSaison(): ?float
+    {
+        return $this->tarifHauteSaison;
+    }
+
+    public function setTarifHauteSaison(float $tarifHauteSaison): self
+    {
+        $this->tarifHauteSaison = $tarifHauteSaison;
+
+        return $this;
+    }
+
+    public function getTarifBasseSaison(): ?float
+    {
+        return $this->tarifBasseSaison;
+    }
+
+    public function setTarifBasseSaison(float $tarifBasseSaison): self
+    {
+        $this->tarifBasseSaison = $tarifBasseSaison;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
 
         return $this;
     }

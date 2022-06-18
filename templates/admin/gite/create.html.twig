@@ -10,29 +10,57 @@
 
 	{{ form_start(formGite) }}
 
-	<div class="row">
-		<div class="col-6">
-			{{ form_row(formGite.nom) }}
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				{{ form_row(formGite.nom) }}
+			</div>
+			<div class="col-6">
+				{{ form_row(formGite.description) }}
+			</div>
 		</div>
-		<div class="col-6">
-			{{ form_row(formGite.description) }}
+		<div class="row">
+			<div class="col-12">
+				{{ form_row(formGite.equipements) }}
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-4">
-			{{ form_row(formGite.surface) }}
+		<div class="row">
+			<div class="col-4">
+				{{ form_row(formGite.surface) }}
+			</div>
+			<div class="col-4">
+				{{ form_row(formGite.chambre) }}
+			</div>
+			<div class="col-4">
+				{{ form_row(formGite.couchage) }}
+			</div>
 		</div>
-		<div class="col-4">
-			{{ form_row(formGite.chambre) }}
+		<div class="row">
+			<div class="col-6">
+				{{ form_row(formGite.animaux) }}
+			</div>
+			<div class="col-6">
+				{{form_row(formGite.tarifAnimaux)}}
+			</div>
 		</div>
-		<div class="col-4">
-			{{ form_row(formGite.couchage) }}
+		<div class="row">
+			<div class="col-6">
+				{{ form_row(formGite.tarifBasseSaison) }}
+			</div>
+			<div class="col-6">
+				{{ form_row(formGite.tarifHauteSaison) }}
+			</div>
 		</div>
-	</div>
+		<div class="row">
+			<div class="col-12">
+				{{ form_row(formGite.ville) }}
+			</div>
+		</div>
 
-	<div class="form-group">
-		<button type="submit" class="btn btn-primary">Enregistrer</button>
-		<button type="reset" class="btn btn-warning">Annuler</button>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Enregistrer</button>
+			<button type="reset" class="btn btn-warning">Annuler</button>
+		</div>
 	</div>
 
 	{{ form_end(formGite) }}

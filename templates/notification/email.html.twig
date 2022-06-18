@@ -8,9 +8,9 @@
 	<body>
 		<h1>Demande de contact</h1>
 		<h3>
-			Madame/Monsieur
 			{{ contact.nom }}
-			a demandé à vous contacter
+			a demandé à vous contacter pour le gite
+			{{ contact.gite.nom }}
 		</h3>
 
 		<p>{{ contact.message }}</p>

@@ -22,3 +22,28 @@ Générer des gites:
                 }
         
                 // END
+
+
+
+
+Créer une relation Gite / Use 
+
+php bin/console make:entity
+
+ > User
+
+ > gites
+ > relation
+
+ > Gite
+
+ > OneToMany
+
+ >
+ >
+ >
+
+C:\wamp64\www\gites-progica>php bin/console make:migration
+
+C:\wamp64\www\gites-progica>php bin/console doctrine:migrations:migrate
+ >

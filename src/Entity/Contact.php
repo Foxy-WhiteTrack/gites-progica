@@ -2,6 +2,12 @@
 
 namespace App\Entity;
 
+use App\Entity\Gite;
+use App\Repository\EquipementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
 class Contact
 {
 
@@ -9,6 +15,11 @@ class Contact
     private string $email;
     private string $telephone;
     private string $message;
+
+    /**
+     * @var Gite|null
+     */
+    private $gite;
 
     /**
      * Get the value of nom
@@ -86,6 +97,31 @@ class Contact
     public function setMessage($message)
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of gite
+     *
+     * @return  Gite|null
+     */
+    public function getGite()
+    {
+
+        return $this->gite;
+    }
+
+    /**
+     * Set the value of gite
+     *
+     * @param  Gite|null  $gite
+     *
+     * @return  self
+     */
+    public function setGite($gite)
+    {
+        $this->gite = $gite;
 
         return $this;
     }

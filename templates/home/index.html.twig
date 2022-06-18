@@ -26,6 +26,16 @@
 									ch -
 									{{ gite.couchage }}
 								</p>
+								<p class="card-text">
+									<b>{{ gite.ville }}</b>
+								</p>
+								<p class="card-text">
+									tarif basse saison:
+									{{ gite.tarifBasseSaison }}
+									- 
+																																												tarif basse saison:
+									{{ gite.tarifHauteSaison }}
+								</p>
 								<a href="{{ path('gite_show', {id: gite.id}) }}" class="btn btn-primary">Voir</a>
 							</div>
 						</div>

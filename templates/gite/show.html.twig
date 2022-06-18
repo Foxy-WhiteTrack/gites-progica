@@ -6,43 +6,72 @@
 
 {% block body %}
 
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-body">
-					{{ gite.nom }}
-				</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="text-center my-2">{{ gite.nom }}</h2>
 			</div>
 		</div>
-	</div>
 
-	<div class="row">
-		<div class="col-6">
-			<table class="table">
-				<tr>
-					<td>Surface</td>
-					<td>{{ gite.surface }}</td>
-				</tr>
-				<tr>
-					<td>Chambres</td>
-					<td>{{ gite.chambre }}</td>
-				</tr>
-				<tr>
-					<td>Couchages</td>
-					<td>{{ gite.couchage }}</td>
-				</tr>
-			</table>
-		</div>
-		<div class="col-6">
-			<h2>Equipements</h2>
-			<table class="table">
-				{% for equipement in gite.equipements %}
+		<div class="row">
+			<div class="col-12">
+				<table class="table">
 					<tr>
-						<td>{{ equipement.name }}</td>
+						<th>Ville</th>
+						<td>{{ gite.ville }}</td>
 					</tr>
-				{% endfor %}
-			</table>
+					<tr>
+						<th>Surface</th>
+						<td>{{ gite.surface }}</td>
+					</tr>
+					<tr>
+						<th>Chambres</th>
+						<td>{{ gite.chambre }}</td>
+					</tr>
+					<tr>
+						<th>Couchages</th>
+						<td>{{ gite.couchage }}</td>
+					</tr>
+					<tr>
+						<th>Animaux acceptés</th>
+						<td>{{ gite.animaux ? 'Oui' : 'Non' }}
+						</td>
+					</tr>
+					{% if gite.animaux == true %}
+						<tr>
+							<th>Tarif Animaux</th>
+							<td>{{ gite.tarifAnimaux }}
+								€ / semaine
+							</td>
+						</tr>
+					{% endif %}
+					<tr>
+						<th>Basse Saison</th>
+						<td>{{ gite.tarifBasseSaison }}
+							€ / semaine</td>
+					</tr>
+					<tr>
+						<th>Haute Saison</th>
+						<td>{{ gite.tarifHauteSaison }}
+							€ / semaine</td>
+					</tr>
+				</table>
+			</div>
 		</div>
+		<div class="row">
+			<div class="col-12">
+				<h2>Equipements</h2>
+				<table class="table">
+					{% for equipement in gite.equipements %}
+						<tr>
+							<td>☑
+								{{ equipement.name }}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+
 		<div class="container">
 			<a href="/" class="btn btn-primary">Retour</a>
 		</div>
