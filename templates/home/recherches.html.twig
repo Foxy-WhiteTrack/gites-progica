@@ -5,38 +5,35 @@
 
 {% block body %}
 
+
 	<div class="row my-3">
-		{{ form_start(form) }}
-		<div class="card">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-2">
-						{{ form_row(form.minSurface) }}
-					</div>
-					<div class="col-2">
-						{{ form_row(form.minChambre) }}
-					</div>
-					<div class="col-2">
-						{{ form_row(form.minCouchage) }}
-					</div>
-					<div class="col-3">
-						{{ form_row(form.equipement) }}
-					</div>
-					<div class="col-3">
-						{{ form_row(form.submit) }}
-					</div>
+		<div class="col-3">
+			{{ form_start(form) }}
+			<div class="card vh-100">
+				<div class="card-body">
+
+					{{ form_row(form.minSurface) }}
+
+
+					{{ form_row(form.minChambre) }}
+
+
+					{{ form_row(form.minCouchage) }}
+
+
+					{{ form_row(form.equipement) }}
+
+
+					{{ form_row(form.submit) }}
+
 				</div>
 
 			</div>
+
+			{{ form_end(form) }}
 		</div>
-		{{ form_end(form) }}
-	</div>
-
-	<div class="m-2 p-2">
-
-		<div class="container">
+		<div class="col-9">
 			<div class="row">
-
 				{% for gite in gites %}
 					<div class="col-4 mb-3">
 						<div class="card">
@@ -56,11 +53,11 @@
 						</div>
 					</div>
 				{% endfor %}
-
 			</div>
+
 		</div>
+
 	</div>
 
 
-</div>
-<div class="container"></div>{% endblock body %}
+{% endblock body %}

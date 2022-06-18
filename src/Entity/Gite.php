@@ -81,6 +81,8 @@ class Gite
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="Merci de renseigner un tarif")
+     * @Assert\PositiveOrZero(message="Le tarif doit être positif ou égal à zéro")
      */
     private $tarifAnimaux;
 
@@ -98,6 +100,26 @@ class Gite
      * @ORM\Column(type="string", length=255)
      */
     private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $coordonneeProprio;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $coordonneeContact;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $region;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $departement;
 
     public function __construct()
     {
@@ -226,9 +248,6 @@ class Gite
 
     public function setTarifAnimaux(float $tarifAnimaux): self
     {
-        if ($tarifAnimaux = null) {
-            $tarifAnimaux = 0;
-        }
         $this->tarifAnimaux = $tarifAnimaux;
         return $this;
     }
@@ -265,6 +284,54 @@ class Gite
     public function setVille(string $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getCoordonneeProprio(): ?string
+    {
+        return $this->coordonneeProprio;
+    }
+
+    public function setCoordonneeProprio(string $coordonneeProprio): self
+    {
+        $this->coordonneeProprio = $coordonneeProprio;
+
+        return $this;
+    }
+
+    public function getCoordonneeContact(): ?string
+    {
+        return $this->coordonneeContact;
+    }
+
+    public function setCoordonneeContact(string $coordonneeContact): self
+    {
+        $this->coordonneeContact = $coordonneeContact;
+
+        return $this;
+    }
+
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }
+
+    public function setRegion(string $region): self
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    public function getDepartement(): ?string
+    {
+        return $this->departement;
+    }
+
+    public function setDepartement(string $departement): self
+    {
+        $this->departement = $departement;
 
         return $this;
     }

@@ -10,6 +10,8 @@
 		<div class="row">
 			<div class="col-12">
 				<h2 class="text-center my-2">{{ gite.nom }}</h2>
+				<br>
+				<p>{{ gite.description }}</p>
 			</div>
 		</div>
 
@@ -19,6 +21,14 @@
 					<tr>
 						<th>Ville</th>
 						<td>{{ gite.ville }}</td>
+					</tr>
+					<tr>
+						<th>Département</th>
+						<td>{{ gite.departement }}</td>
+					</tr>
+					<tr>
+						<th>Région</th>
+						<td>{{ gite.region }}</td>
 					</tr>
 					<tr>
 						<th>Surface</th>
@@ -54,6 +64,14 @@
 						<th>Haute Saison</th>
 						<td>{{ gite.tarifHauteSaison }}
 							€ / semaine</td>
+					</tr>
+					<tr>
+						<th>Coordonnées du propriétaire</th>
+						<td>{{ gite.coordonneeProprio }}</td>
+					</tr>
+					<tr>
+						<th>Coordonnées de la personne à contacter</th>
+						<td>{{ gite.coordonneeContact }}</td>
 					</tr>
 				</table>
 			</div>

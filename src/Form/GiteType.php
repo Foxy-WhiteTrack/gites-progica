@@ -65,6 +65,20 @@ class GiteType extends AbstractType
             ])
             ->add('ville', TextType::class, [
                 'required' => false
+            ])
+            ->add('departement', TextType::class, [
+                'required' => false
+            ])
+            ->add('region', TextType::class, [
+                'required' => false
+            ])
+            ->add('coordonneeProprio', TextType::class, [
+                'required' => false,
+                'label' => 'Coordonnées du propriétaire'
+            ])
+            ->add('coordonneeContact', TextType::class, [
+                'required' => false,
+                'label' => 'Coordonnées de la personne à contacter'
             ]);
     }
 
