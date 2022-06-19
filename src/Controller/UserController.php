@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserModifType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class UserController extends AbstractController
 {
@@ -27,9 +29,13 @@ class UserController extends AbstractController
 
     /**
      * @Route("/profil/edit/{id}", name="profil_edit")
+
      */
-    public function edit(Request $request, User $user, ManagerRegistry $doctrine): Response
+
+    public function edit(Request $request, User $user, ManagerRegistry $doctrine, int $id): Response
     {
+
+
         $form = $this->createForm(UserModifType::class, $user);
         $form->handleRequest($request);
 
@@ -40,7 +46,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('home/useredit.html.twig', [
+        return $this->render('user/useredit.html.twig', [
             "menu" => "profil",
             "form" => $form->createView()
         ]);

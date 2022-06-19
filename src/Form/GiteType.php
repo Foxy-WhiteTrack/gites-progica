@@ -79,7 +79,14 @@ class GiteType extends AbstractType
             ->add('coordonneeContact', TextType::class, [
                 'required' => false,
                 'label' => 'Coordonnées de la personne à contacter'
-            ]);
+            ])
+            // ->add('user', EntityType::class, [
+            //     'class' => User::class,
+            //     'choice_label' => 'username',
+            //     'multiple' => false,
+            //     'label' => 'Propriétaire du gite'
+            // ])
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
