@@ -47,7 +47,7 @@
 								<a class="nav-link {% if menu is defined and menu == 'admin' %}active{% endif %}" href="{{ path('admin_index') }}">Gestion Gites</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link {% if menu is defined and menu == 'admin_equipement' %}active{% endif %}" href="{{ path('admin_equipement') }}">Gestion Equipement</a>
+								<a class="nav-link {% if menu is defined and menu == 'admin_equipement' %}active{% endif %}" href="{{ path('admin_equipement') }}">Gestion Equipement et Services</a>
 							</li>
 						{% endif %}
 
@@ -55,13 +55,22 @@
 				</div>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item justify-content-end">
-							{% if app.user %}
+						{% if app.user %}
+							<li class="nav-item">
+								<a class="nav-link {% if menu is defined and menu == 'profil' %}active{% endif %}" href="{{ path('profil', {id: app.user.id}) }}">Profil</a>
+							</li>
+							<li class="nav-item justify-content-end">
 								<a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
-							{% else %}
+							</li>
+						{% else %}
+							<li class="nav-item justify-content-end">
 								<a class="nav-link" href="{{ path('app_login') }}">Login</a>
-							{% endif %}
-						</li>
+							</li>
+							<li class="nav-item justify-content-end">
+								<a class="nav-link" href="{{ path('app_register') }}">S'enregistrer</a>
+							</li>
+						{% endif %}
+
 					</ul>
 				</div>
 

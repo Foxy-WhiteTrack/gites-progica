@@ -29,9 +29,8 @@ class EquipementFixtures extends Fixture implements FixtureGroupInterface
 
         $equip4 = new Equipement();
         $equip4->setName('TV');
+
         $manager->persist($equip4);
-
-
         $manager->flush();
     }
 }

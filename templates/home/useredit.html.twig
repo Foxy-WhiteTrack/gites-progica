@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil | Progica
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h3>Modifier votre profil</h3>
+		<div>
+			{{form_start(form)}}
+
+			<div class="row">
+				<div class="col-6 mb-3 mt-2">
+					{{form_row(form.nom)}}
+				</div>
+				<div class="col-6 mb-3 mt-2">
+					{{form_row(form.prenom)}}
+				</div>
+				<div class="row">
+					<div class="col-6 mb-3 mt-2">
+						{{form_row(form.username)}}
+					</div>
+					<div class="col-6 mb-3">
+						{{form_row(form.phone)}}
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-12">
+					{{form_row(form.email)}}
+				</div>
+				<div class="col-12">
+					{{form_row(form.adresse)}}
+				</div>
+			</div>
+			<div class="row"></div>
+			<div class="row">
+				<div class="col-6 mb-3">
+					{{form_row(form.codeZip)}}
+				</div>
+				<div class="col-6 mb-3">
+					{{form_row(form.ville)}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="row mb-2">
+					<div class="col">
+						<input class="btn btn-primary" type="submit" value="Modifier">
+					</div>
+				</div>
+
+			</div>
+
+			{{form_end(form)}}
+		</div>
+	</div>
+
+
+{% endblock body %}
